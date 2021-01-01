@@ -10,12 +10,13 @@
         android:id="@+id/editTextNumberPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="252dp"
         android:ems="10"
         android:hint="Código"
         android:inputType="numberPassword"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="78dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
