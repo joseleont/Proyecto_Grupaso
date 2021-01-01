@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Proyecto_Grupaso</string>
+
+    <string-array name="Dispositivos">
+        <item>Laptop</item>
+        <item>Tableta</item>
+        <item>Celular</item>
+        <item>Monitor</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="Roles">
+        <item>Alumno</item>
+        <item>Docente</item>
+        <item>Administrativo</item>
+
+    </string-array>
+
+
 </resources>
