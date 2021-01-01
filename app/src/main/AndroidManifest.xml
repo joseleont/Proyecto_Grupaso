@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InciarSesion"></activity>
+        <activity android:name=".PantallaInicialUsuarioTI"></activity>
+        <activity android:name=".PantallaInicialCliente" />
+        <activity android:name=".InciarSesion" />
         <activity android:name=".RegistroNuevoCliente" />
         <activity android:name=".MainActivity">
             <intent-filter>
