@@ -20,9 +20,17 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import pe.edu.pucp.proyecto_grupaso.models.Usuario;
 
 
 public class RegistroNuevoCliente extends AppCompatActivity {
+
+    String textCodigo;
+    String textCorreo;
+    String textoSpiner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +48,13 @@ public class RegistroNuevoCliente extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 String textSpinner = adapterView.getItemAtPosition(position).toString();
-
+                textoSpiner=textSpinner;
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 String textSpinner ="Alumno";
-
+                textoSpiner=textSpinner;
             }
         });
 
@@ -70,8 +78,8 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
         EditText editTextCorreo=findViewById(R.id.editTextCorreoRegistroNuevoCliente);
         EditText editTextContraseña=findViewById(R.id.editTextContraseñaRegistroNuevoCliente);
 
-        String textCodigo=editTextCodigo.getText().toString();
-        String textCorreo=editTextCorreo.getText().toString()+"";
+        textCodigo=editTextCodigo.getText().toString();
+        textCorreo=editTextCorreo.getText().toString()+"";
         String textContraseña=editTextContraseña.getText().toString();
 
 
@@ -112,6 +120,7 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("cuenta", "createUserWithEmail:success");
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                                subirInfoUsuario(user.getUid());
                                 finish();
                             }
 
@@ -120,13 +129,21 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
                     });
 
 
-
-
-
-
         } //fin error==0
 
     } //fin del metodo apra crear usuario
+
+    public void subirInfoUsuario(String uid){
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+        Usuario usuario  = new Usuario();
+
+        usuario.setCodigo(textCodigo);
+        usuario.setCorreo(textCorreo);
+        usuario.setTipo("cliente");
+        usuario.setRol(textoSpiner);
+
+        databaseReference.child("Usuarios").child(uid).setValue(usuario);
+    }
 
     public void cancelar(View view){
         finish();
