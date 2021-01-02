@@ -1,4 +1,4 @@
-package pe.edu.pucp.proyecto_grupaso;
+package pe.edu.pucp.proyecto_grupaso.models;
 
 public class Dispositivo {
     private String tipo;

@@ -12,11 +12,11 @@
         <activity android:name=".AgregarFotoDispositivo"></activity>
         <activity android:name=".AgregarDispositivo" />
         <activity android:name=".GestionDispositivos" />
-        <activity android:name=".PantallaInicialUsuarioTI" />
-        <activity android:name=".PantallaInicialCliente" />
+        <activity android:name=".activities.UsuarioTIActivity" />
+        <activity android:name=".activities.ClienteActivity" />
         <activity android:name=".InciarSesion" />
         <activity android:name=".RegistroNuevoCliente" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

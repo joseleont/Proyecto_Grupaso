@@ -1,10 +1,12 @@
-package pe.edu.pucp.proyecto_grupaso;
+package pe.edu.pucp.proyecto_grupaso.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class PantallaInicialCliente extends AppCompatActivity {
+import pe.edu.pucp.proyecto_grupaso.R;
+
+public class ClienteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
