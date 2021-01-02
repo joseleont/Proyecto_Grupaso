@@ -1,9 +1,14 @@
 package pe.edu.pucp.proyecto_grupaso.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import pe.edu.pucp.proyecto_grupaso.IniciarSesion;
 import pe.edu.pucp.proyecto_grupaso.R;
+import pe.edu.pucp.proyecto_grupaso.RegistroNuevoCliente;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,4 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    public void registrar(View view){
+
+        startActivity(new Intent(MainActivity.this, RegistroNuevoCliente.class));
+
+    }
+
+    public void ingresar(View view){
+        startActivity(new Intent(MainActivity.this, IniciarSesion.class));
+        finish();
+    }
+
+
 }

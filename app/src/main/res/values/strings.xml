@@ -12,6 +12,7 @@
     <string name="tomarFoto">Tomar Foto</string>
     <string name="agregarCarrete">Agregar desde Carrete</string>
     <string name="listo">Listo</string>
+    <string name="nombreFoto">Indique nombre de foto</string>
 
     <string-array name="Dispositivos">
         <item>Laptop</item>
