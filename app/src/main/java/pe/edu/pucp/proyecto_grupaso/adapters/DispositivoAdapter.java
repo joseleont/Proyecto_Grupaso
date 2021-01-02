@@ -1,5 +1,6 @@
 package pe.edu.pucp.proyecto_grupaso.adapters;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,18 @@ public class DispositivoAdapter extends RecyclerView.Adapter<DispositivoViewHold
     @Override
     public void onBindViewHolder(@NonNull DispositivoViewHolder holder, int position) {
         // TODO
+        String countText = "No disponible";
+        final Dispositivo dispositivo = dispositivos.get(position);
+
+        if (dispositivo.getStock() >= 1) countText = dispositivo.getStock() + " en stock";
+
+        holder.getDeviceBrand().setText(dispositivo.getMarca());
+        holder.getDeviceName().setText(dispositivo.getIncluye());
+        holder.getDeviceType().setText(dispositivo.getTipo());
+        holder.getDeviceCount().setText(countText);
+        holder.getDevicePhoto().setImageURI(Uri.parse(dispositivo.getFoto()));
+
+
     }
 
     @Override

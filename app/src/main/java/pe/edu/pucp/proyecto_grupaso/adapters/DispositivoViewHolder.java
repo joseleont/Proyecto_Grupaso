@@ -30,16 +30,32 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
         return devicePhoto;
     }
 
+    public void setDevicePhoto(ImageView devicePhoto) {
+        this.devicePhoto = devicePhoto;
+    }
+
     public TextView getDeviceName() {
         return deviceName;
+    }
+
+    public void setDeviceName(TextView deviceName) {
+        this.deviceName = deviceName;
     }
 
     public TextView getDeviceBrand() {
         return deviceBrand;
     }
 
+    public void setDeviceBrand(TextView deviceBrand) {
+        this.deviceBrand = deviceBrand;
+    }
+
     public TextView getDeviceType() {
         return deviceType;
+    }
+
+    public void setDeviceType(TextView deviceType) {
+        this.deviceType = deviceType;
     }
 
     public TextView getDeviceCount() {

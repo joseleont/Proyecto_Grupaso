@@ -8,6 +8,15 @@ public class Dispositivo {
     private String incluye;
     private int stock;
 
+    public Dispositivo(String tipo, String marca, String foto, String caracteristicas, String incluye, int stock) {
+        this.tipo = tipo;
+        this.marca = marca;
+        this.foto = foto;
+        this.caracteristicas = caracteristicas;
+        this.incluye = incluye;
+        this.stock = stock;
+    }
+
     public String getTipo() {
         return tipo;
     }

@@ -12,6 +12,7 @@ import pe.edu.pucp.proyecto_grupaso.R;
 public class ClienteActivity extends AppCompatActivity {
 
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
     // ver si currentuser != null y ademas que no sea uno de los de IT y sino volver al main activity
     // FirebaseFirestore database = FirebaseFirestore.getInstance();
 
