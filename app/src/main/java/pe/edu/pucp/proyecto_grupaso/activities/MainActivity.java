@@ -1,10 +1,12 @@
-package pe.edu.pucp.proyecto_grupaso;
+package pe.edu.pucp.proyecto_grupaso.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import pe.edu.pucp.proyecto_grupaso.R;
 
 public class MainActivity extends AppCompatActivity {
 

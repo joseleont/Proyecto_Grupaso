@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,12 +15,31 @@ import android.widget.Spinner;
 public class AgregarDispositivo extends AppCompatActivity {
 
     String textSpinner;
+=======
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.google.firebase.database.FirebaseDatabase;
+
+public class AgregarDispositivo extends AppCompatActivity {
+
+    EditText etOtro;
+    EditText etMarca;
+    EditText etCaracteristicas;
+    EditText etIncluye;
+    EditText etCantidad;
+    Spinner spinnerTipo;
+    String tipo;
+    int cantidad;
+>>>>>>> f1431e9f327e8b56655ea3fc715e9db8d668371a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_dispositivo);
 
+<<<<<<< HEAD
 
 
 
@@ -50,6 +70,28 @@ public class AgregarDispositivo extends AppCompatActivity {
         });
 
 
+=======
+        etOtro = findViewById(R.id.etOtros);
+        etMarca = findViewById(R.id.etMarca);
+        etCaracteristicas = findViewById(R.id.etCaracteristicas);
+        etCantidad = findViewById(R.id.etCantidad);
+        etIncluye = findViewById(R.id.etIncluye);
+        spinnerTipo = findViewById(R.id.spinnerTipo);
+
+    }
+
+    public void AgregarFoto (View view){
+
+    }
+
+    public void AgregarDispositivo (View view){
+
+    }
+
+
+    public  void Cancelar (View view){
+        finish();
+>>>>>>> f1431e9f327e8b56655ea3fc715e9db8d668371a
     }
 
 
