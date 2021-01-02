@@ -7,66 +7,75 @@
     tools:context=".RegistroNuevoCliente">
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/editTextContraseñaRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerRol"
         app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintStart_toStartOf="@+id/spinnerRol"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerRol" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextCorreoRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Correo"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toEndOf="@+id/editTextCodigoRegistroNuevoCliente"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintStart_toStartOf="@+id/editTextCodigoRegistroNuevoCliente"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCodigoRegistroNuevoCliente" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerRol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:entries="@array/Roles"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextCorreoRegistroNuevoCliente"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="@+id/editTextCorreoRegistroNuevoCliente"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCorreoRegistroNuevoCliente" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/editTextCodigoRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="Código"
         android:inputType="number"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="159dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnCancelarCuentaRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="48dp"
+        android:onClick="cancelar"
         android:text="Cancelar"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="526dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContraseñaRegistroNuevoCliente" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnCrearCuentaRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:onClick="crearCuenta"
         android:text="Crear Cuenta"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="528dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnCancelarCuentaRegistroNuevoCliente"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelarCuentaRegistroNuevoCliente"
+        app:layout_constraintTop_toTopOf="@+id/btnCancelarCuentaRegistroNuevoCliente"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
