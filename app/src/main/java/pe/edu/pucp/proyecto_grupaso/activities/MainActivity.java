@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import pe.edu.pucp.proyecto_grupaso.IniciarSesion;
 import pe.edu.pucp.proyecto_grupaso.R;
 import pe.edu.pucp.proyecto_grupaso.RegistroNuevoCliente;
 
@@ -17,10 +18,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void registrar(View view) {
+    public void registrar(View view){
 
         startActivity(new Intent(MainActivity.this, RegistroNuevoCliente.class));
 
-
     }
+
+    public void ingresar(View view){
+        startActivity(new Intent(MainActivity.this, IniciarSesion.class));
+        finish();
+    }
+
+
 }

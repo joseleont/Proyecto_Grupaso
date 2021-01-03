@@ -1,5 +1,12 @@
 package pe.edu.pucp.proyecto_grupaso.models;
 
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@IgnoreExtraProperties
 public class Dispositivo {
     private String tipo;
     private String marca;
@@ -7,6 +14,32 @@ public class Dispositivo {
     private String caracteristicas;
     private String incluye;
     private int stock;
+
+    public Dispositivo() {
+    }
+
+    public Dispositivo(String tipo, String marca, String foto, String caracteristicas, String incluye, int stock) {
+        this.tipo = tipo;
+        this.marca = marca;
+        this.foto = foto;
+        this.caracteristicas = caracteristicas;
+        this.incluye = incluye;
+        this.stock = stock;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("tipo", tipo);
+        map.put("marca", marca);
+        map.put("foto", foto);
+        map.put("caracteristicas", caracteristicas);
+        map.put("incluye", incluye);
+        map.put("stock", stock);
+        return map;
+
+
+    }
 
     public String getTipo() {
         return tipo;
