@@ -1,6 +1,7 @@
 package pe.edu.pucp.proyecto_grupaso.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import pe.edu.pucp.proyecto_grupaso.R;
 import pe.edu.pucp.proyecto_grupaso.adapters.DispositivoAdapter;
@@ -32,10 +32,21 @@ public class ClientListDispositivosFragment extends Fragment {
     private EditText etSearch;
     private Button filterBtn;
 
-    String filter;
+    String filter = "";
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Equipos");
+
+    public static ClientListDispositivosFragment newInstance() {
+        ClientListDispositivosFragment clf = new ClientListDispositivosFragment();
+        Bundle args = new Bundle();
+        return clf;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +58,10 @@ public class ClientListDispositivosFragment extends Fragment {
 
         myDeviceRv = view.findViewById(R.id.mydevicelistrv);
         myDeviceRv.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        myDeviceRv.setAdapter(new DispositivoAdapter(filteredDeviceList(filter)));
+
+        filteredDeviceList(filter);
+
+        // myDeviceRv.setAdapter(new DispositivoAdapter());
 
         etSearch = view.findViewById(R.id.editTextSearch);
 
@@ -57,32 +71,39 @@ public class ClientListDispositivosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 filter = etSearch.getText().toString();
-                if (!filter.equals("") && !filter.equals(null)) {
-                    // cambiar el adapter de myDeviceRv por el nuevo adapter (?)
-                    // no estoy seguro si eso va a funcionar jzjzjzj
-                    myDeviceRv.setAdapter(null);
-                    myDeviceRv.setAdapter(new DispositivoAdapter(filteredDeviceList(filter)));
-                }
+
+                myDeviceRv.setAdapter(null);
+                filteredDeviceList(filter);
+                // myDeviceRv.setAdapter(new DispositivoAdapter(filteredDeviceList(filter)));
+
             }
         });
 
         return view;
     }
 
-    ArrayList<Dispositivo> filteredDeviceList(String filter) {
+    void filteredDeviceList(@NonNull String filter) {
 
         final ArrayList<Dispositivo> losqueconcuerdan = new ArrayList<>();
 
-        if (!filter.equals("") && !filter.equals(null)) {
+        if (!filter.equals("")) {
 
             // obtener los equipos que concuerdan con el filtro
             // y mandarlos a los que concuerdan
 
             myRef.orderByChild("marca").equalTo(filter).addChildEventListener(new ChildEventListener() {
+
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Log.d("myapp", "onChildAdded: " + snapshot.getValue());
                     Dispositivo mydevice = snapshot.getValue(Dispositivo.class);
+                    Log.d("myapp", "onChildAdded: " + mydevice.toString());
                     losqueconcuerdan.add(mydevice);
+                    Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount());
+                    if (losqueconcuerdan.size() > 0) {
+                        ClientListDispositivosFragment.this.myDeviceRv.setAdapter(new DispositivoAdapter(losqueconcuerdan));
+                        Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount() + " added");
+                    }
                 }
 
                 @Override
@@ -109,8 +130,15 @@ public class ClientListDispositivosFragment extends Fragment {
             myRef.orderByChild("tipo").equalTo(filter).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Log.d("myapp", "onChildAdded: " + snapshot.getValue());
                     Dispositivo mydevice = snapshot.getValue(Dispositivo.class);
+                    Log.d("myapp", "onChildAdded: " + mydevice.toString());
                     losqueconcuerdan.add(mydevice);
+                    Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount());
+                    if (losqueconcuerdan.size() > 0) {
+                        ClientListDispositivosFragment.this.myDeviceRv.setAdapter(new DispositivoAdapter(losqueconcuerdan));
+                        Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount() + " added");
+                    }
                 }
 
                 @Override
@@ -140,10 +168,18 @@ public class ClientListDispositivosFragment extends Fragment {
             // y mandarlos al arraylist
 
             myRef.addChildEventListener(new ChildEventListener() {
+
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Log.d("myapp", "onChildAdded: " + snapshot.getValue());
                     Dispositivo mydevice = snapshot.getValue(Dispositivo.class);
+                    Log.d("myapp", "onChildAdded: " + mydevice.toString());
                     losqueconcuerdan.add(mydevice);
+                    Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount());
+                    if (losqueconcuerdan.size() > 0) {
+                        ClientListDispositivosFragment.this.myDeviceRv.setAdapter(new DispositivoAdapter(losqueconcuerdan));
+                        Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount() + " added");
+                    }
                 }
 
                 @Override
@@ -165,11 +201,13 @@ public class ClientListDispositivosFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
+
+
             });
 
 
         }
-
-        return new ArrayList<>(new HashSet<>(losqueconcuerdan));
+        // Log.d("myapp", "filteredDeviceList: " + losqueconcuerdan.size() + " dispositivos en bbdd");
+        // return new ArrayList<>(new HashSet<>(losqueconcuerdan));
     }
 }
