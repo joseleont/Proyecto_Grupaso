@@ -29,6 +29,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class AgregarFotoDispositivo extends AppCompatActivity {
 
@@ -40,6 +42,7 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
     Button btnCarrete;
     EditText etnombreFoto;
     StorageReference referenciaFinal;
+    Uri direccionImagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
 
         imageViewFoto = findViewById(R.id.imageViewFoto);
         btnSubirFoto = findViewById(R.id.btnSubirFoto);
-        btnSubirCarrete = findViewById(R.id.btnSubirCarrete);
+        //btnSubirCarrete = findViewById(R.id.btnSubirCarrete);
         btnTomarFoto = findViewById(R.id.btnTomarFoto);
         btnCarrete = findViewById(R.id.btnCarrete);
         etnombreFoto = findViewById(R.id.etNombreFoto);
@@ -73,6 +76,15 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
                 Toast.makeText(this, "No hay permisos de cámara", Toast.LENGTH_LONG).show();
             }
         }
+
+        if (requestCode == 2000) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                elegirCarrete();
+            } else {
+                Toast.makeText(this, "No hay permisos de almacenamiento", Toast.LENGTH_LONG).show();
+            }
+        }
+
     }
 
     public void tomarFoto(){
@@ -88,6 +100,21 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
             imageViewFoto.setImageBitmap(imagen);
             btnSubirFoto.setVisibility(View.VISIBLE);
         }
+
+        if (requestCode == 2 && resultCode == RESULT_OK){
+            direccionImagen = data.getData();
+            try{
+                imagen = MediaStore.Images.Media.getBitmap(getContentResolver(),direccionImagen);
+                imageViewFoto.setImageBitmap(imagen);
+                imageViewFoto.invalidate();
+                btnSubirFoto.setVisibility(View.VISIBLE);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void subirFotoFirebase(View view){
@@ -121,9 +148,20 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
                 });
     }
 
-    public void elegirCarrete(View view){
-        //Seleccionar de carrete
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void permisoCarrete(View view){
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 2000);
+        }else{
+            elegirCarrete();
+        }
     }
 
+    public void elegirCarrete() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        //intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 2);
+    }
 
 }
