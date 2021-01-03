@@ -32,7 +32,6 @@ public class DispositivoAdapter extends RecyclerView.Adapter<DispositivoViewHold
 
     @Override
     public void onBindViewHolder(@NonNull DispositivoViewHolder holder, int position) {
-        // TODO
         String countText = "No disponible";
         final Dispositivo dispositivo = dispositivos.get(position);
 
