@@ -62,8 +62,8 @@ public class RegistroNuevoCliente extends AppCompatActivity {
 
     }
 
-FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
-
+FirebaseAuth firebaseAuth= FirebaseAuth.getInstance(); //obtneer referencia
+    FirebaseUser user; //varibale con el usuario
 
 
 
@@ -119,8 +119,10 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("cuenta", "createUserWithEmail:success");
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                user = firebaseAuth.getCurrentUser();
                                 subirInfoUsuario(user.getUid());
+
+                                enviarCorreoConfirmacion();
                                 finish();
                             }
 
@@ -141,8 +143,27 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
         usuario.setCorreo(textCorreo);
         usuario.setTipo("cliente");
         usuario.setRol(textoSpiner);
+        usuario.setUid(uid);
 
         databaseReference.child("Usuarios").child(uid).setValue(usuario);
+    }
+
+    public void enviarCorreoConfirmacion(){
+
+        user.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (!user.isEmailVerified()) {
+                    Toast.makeText(RegistroNuevoCliente.this, "Se le ha enviado un correo para verificar su cuenta", Toast.LENGTH_SHORT).show();
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.d("infoApp", "correo enviado");
+                        }
+                    });
+                }
+            }
+        });
     }
 
     public void cancelar(View view){
