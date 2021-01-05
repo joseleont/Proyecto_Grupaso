@@ -2,12 +2,14 @@ package pe.edu.pucp.proyecto_grupaso.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import pe.edu.pucp.proyecto_grupaso.Mapa.MapsActivity;
 import pe.edu.pucp.proyecto_grupaso.R;
 import pe.edu.pucp.proyecto_grupaso.models.Solicitud;
 
@@ -65,6 +68,8 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
         holder.tvCorreo.setText("Correo: " + solicitudArrayList.get(position).getCorreoUsuario());
         holder.tvUIDdispositivo.setText(solicitudArrayList.get(position).getUidDispositivo());
         holder.tvMotivo.setText("Motivo: " + solicitudArrayList.get(position).getMotivo());
+
+
     }
 
     @Override
@@ -81,6 +86,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
         String respuestaAfirmativa = "Felicidades, su solicitud fue aceptada.";
         String respuestaNegativa = "Lo sentimos, su solicitud fue rechazada.";
 
+        ImageView mostrarMapa;
 
         public SolicitudHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +97,21 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
             tvMotivo = itemView.findViewById(R.id.tvmotivo);
             btnAceptar = itemView.findViewById(R.id.btnAceptarSolicitud);
             btnRechazar = itemView.findViewById(R.id.btnRechazarSolicitud);
+
+            mostrarMapa=itemView.findViewById(R.id.imageMapa);
+            mostrarMapa.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String gps=solicitud.getGps();
+
+                    Intent intent = new Intent(contexto, MapsActivity.class);
+
+                    intent.putExtra("gps",gps);
+
+                    contexto.startActivity(intent);
+                }
+            });
+
 
             btnAceptar.setOnClickListener(new View.OnClickListener() {
                 @Override
