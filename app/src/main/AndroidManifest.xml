@@ -33,22 +33,25 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".VisualizarPedidos" />
-        <activity android:name=".AgregarFotoDispositivo" />
-        <activity android:name=".AgregarDispositivo" />
-        <activity android:name=".GestionDispositivos" />
-        <activity android:name=".activities.UsuarioTIActivity" />
-        <activity android:name=".activities.ClienteActivity">
+        <activity android:name=".VisualizarPedidos" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AgregarFotoDispositivo" />
+        <activity android:name=".AgregarDispositivo" />
+        <activity android:name=".GestionDispositivos" />
+        <activity android:name=".activities.UsuarioTIActivity" />
+        <activity android:name=".activities.ClienteActivity">
+
+        </activity>
         <activity android:name=".IniciarSesion" />
         <activity android:name=".RegistroNuevoCliente" />
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.MainActivity" >
 
+        </activity>
         <service
             android:name=".FCM"
             android:exported="false">

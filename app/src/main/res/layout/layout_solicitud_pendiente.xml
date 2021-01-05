@@ -7,6 +7,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="10dp"
         app:contentPadding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,34 +23,43 @@
                 android:id="@+id/tvdispositivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="20sp" />
+                android:text="@string/editable"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/editable" />
 
             <TextView
                 android:id="@+id/tvdireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/editable" />
+
+            <TextView
+                android:id="@+id/tvmotivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/editable" />
 
             <Button
                 android:id="@+id/btnAceptarSolicitud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="@string/aceptarSolicitud" />
+                android:text="@string/aceptarSolicitud"
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btnRechazarSolicitud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="@string/rechazarSolicitud" />
+                android:text="@string/rechazarSolicitud"
+                android:textSize="12sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
