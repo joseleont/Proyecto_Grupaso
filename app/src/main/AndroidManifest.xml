@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pe.edu.pucp.proyecto_grupaso">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,31 +12,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AgregarFotoDispositivo"></activity>
+        <activity android:name=".VisualizarPedidos">
+
+        </activity>
+        <activity android:name=".AgregarFotoDispositivo" />
         <activity android:name=".AgregarDispositivo" />
         <activity android:name=".GestionDispositivos" />
         <activity android:name=".activities.UsuarioTIActivity" />
         <activity android:name=".activities.ClienteActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
-        <activity android:name=".IniciarSesion" />
+        <activity android:name=".IniciarSesion" ></activity>
         <activity android:name=".RegistroNuevoCliente" />
         <activity android:name=".activities.MainActivity">
-            <!--
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
+
         </activity>
+
+        <service android:name=".FCM" android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT">
+
+            </action>
+        </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
