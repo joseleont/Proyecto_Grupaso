@@ -27,14 +27,4 @@ public class FCM extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
     }
 
-    public void guardarToken(String token){
-        TokenClientes miTokenCliente = new TokenClientes();
-        String miUsuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        miTokenCliente.setUsuarioUID(miUsuarioUID);
-        miTokenCliente.setToken(token);
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Tokens").child(miUsuarioUID).setValue(miTokenCliente);
-        FirebaseInstanceId.getInstance().getToken();
-    }
-
 }
