@@ -1,10 +1,16 @@
 package pe.edu.pucp.proyecto_grupaso.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +39,38 @@ public class ClienteActivity extends AppCompatActivity {
         // fm.beginTransaction().add(clf,)
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu,menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch(item.getItemId()){
+
+            case R.id.menuSalir:
+                AuthUI instance = AuthUI.getInstance();
+                instance.signOut(this).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        startActivity(new Intent(ClienteActivity.this,MainActivity.class));
+                        finish();
+                    }
+                });
+
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     public void actualizarToken(){
         TokenClientes miTokenCliente = new TokenClientes();

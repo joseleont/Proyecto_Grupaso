@@ -24,6 +24,8 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
         deviceBrand = itemView.findViewById(R.id.deviceBrand);
         deviceType = itemView.findViewById(R.id.deviceType);
         deviceCount = itemView.findViewById(R.id.deviceCount);
+
+
     }
 
     public ImageView getDevicePhoto() {

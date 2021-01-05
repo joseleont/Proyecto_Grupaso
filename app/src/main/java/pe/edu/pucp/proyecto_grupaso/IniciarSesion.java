@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import pe.edu.pucp.proyecto_grupaso.activities.ClienteActivity;
 import pe.edu.pucp.proyecto_grupaso.activities.MainActivity;
 import pe.edu.pucp.proyecto_grupaso.activities.UsuarioTIActivity;
 
@@ -59,7 +60,7 @@ public class IniciarSesion extends AppCompatActivity {
     public void abrirCliente_Usuario(){
 
         if(tipo.equals("cliente")){
-            startActivity(new Intent(IniciarSesion.this, UsuarioTIActivity.class));
+            startActivity(new Intent(IniciarSesion.this, ClienteActivity.class));
         }else{
             startActivity(new Intent(IniciarSesion.this, UsuarioTIActivity.class));
         }
@@ -72,7 +73,7 @@ public class IniciarSesion extends AppCompatActivity {
 
 
     public void validarUsuario(String correo,String contraseña){
-        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
        //INGRESAR CUENTA
         mAuth.signInWithEmailAndPassword(correo,contraseña)
@@ -81,10 +82,7 @@ public class IniciarSesion extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //se ingreso el correo y contraseña correctas
-
-                            currentUser.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                            final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                                     if (currentUser.isEmailVerified()) {
                                         //SE HA VERIFICADO Y ES EL USUARIO CORRECTO
                                         databaseReference.child("Usuarios").child(currentUser.getUid()).child("tipo").addValueEventListener(listenerFb);
@@ -97,8 +95,8 @@ public class IniciarSesion extends AppCompatActivity {
                                             }
                                         });
                                     }
-                                }
-                            });
+
+
 
                         } else {
 
