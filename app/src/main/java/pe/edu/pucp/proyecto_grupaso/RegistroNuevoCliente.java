@@ -82,31 +82,28 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance(); //obtneer referencia
         textCorreo=editTextCorreo.getText().toString()+"";
         String textContraseña=editTextContraseña.getText().toString();
 
+            Log.d("InfoAppM",textCodigo);
+            Log.d("InfoAppM",textCorreo+"a");
+            Log.d("InfoAppM",textContraseña+"b");
 
         if((textCodigo+"").equals("null")){
             error=1;
             editTextCodigo.setError("Ingrese un codigo");
         }else{
-            try {
-                long codigo= Long.parseLong(textCodigo);
-
-                   // error=1;
-                   // editTextCodigo.setError("Codigo incorrecto");
-
-            }catch(NumberFormatException e){
+            if(textCodigo.length()!=8){
+                Log.d("InfoApp3",""+textCodigo.length());
                 error=1;
-                editTextCodigo.setError("Codigo incorrecto");
-                e.printStackTrace();
+                editTextCodigo.setError("El codigo debe ser de 8 digitos");
             }
-
         }
 
-        if(textCorreo.equals("null")){
-
+        if((textCorreo+"").equals("")){
             error=1;
             editTextCorreo.setError("Ingrese un correo");
         }
-        if(textContraseña.equals("null")){
+
+
+        if((textContraseña+"").equals("")){
             error=1;
             editTextContraseña.setError("Ingrese una contraseña");
         }
