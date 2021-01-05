@@ -13,6 +13,16 @@
     <string name="agregarCarrete">Agregar desde Carrete</string>
     <string name="listo">Listo</string>
     <string name="nombreFoto">Indique nombre de foto</string>
+    <string name="iniciarSesion">Iniciar Sesión</string>
+    <string name="registrar">Registrar</string>
+    <string name="agregarDispositivo">Agregar Dispositivo</string>
+    <string name="filtrar">Filtrar</string>
+    <string name="bienvenidaTI">Bienvenido/a usuario TI</string>
+    <string name="gestionarDispositivos">Gestionar Dispositivos</string>
+    <string name="visualizarPedidos">Visualizar Pedidos</string>
+    <string name="visualizarPedidosSaludo">Aquí observa los pedidos pendientes de aprobación</string>
+    <string name="aceptarSolicitud">Aceptar Solicitud</string>
+    <string name="rechazarSolicitud">Rechazar Solicitud</string>
 
     <string-array name="Dispositivos">
         <item>Laptop</item>

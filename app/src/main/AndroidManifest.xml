@@ -2,12 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pe.edu.pucp.proyecto_grupaso">
 
+<<<<<<< HEAD
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+=======
+>>>>>>> 78f6275550ca69db92ad13938ee6f44004ac2a10
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -18,7 +21,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -32,29 +37,50 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+=======
+        <activity android:name=".VisualizarPedidos">
+
+        </activity>
+>>>>>>> 78f6275550ca69db92ad13938ee6f44004ac2a10
         <activity android:name=".AgregarFotoDispositivo" />
         <activity android:name=".AgregarDispositivo" />
         <activity android:name=".GestionDispositivos" />
         <activity android:name=".activities.UsuarioTIActivity" />
         <activity android:name=".activities.ClienteActivity">
+<<<<<<< HEAD
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+=======
+
+>>>>>>> 78f6275550ca69db92ad13938ee6f44004ac2a10
         </activity>
-        <activity android:name=".IniciarSesion" />
+        <activity android:name=".IniciarSesion" ></activity>
         <activity android:name=".RegistroNuevoCliente" />
         <activity android:name=".activities.MainActivity">
 
+<<<<<<< HEAD
             <!--
+=======
+>>>>>>> 78f6275550ca69db92ad13938ee6f44004ac2a10
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
+
         </activity>
+
+        <service android:name=".FCM" android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT">
+
+            </action>
+        </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
