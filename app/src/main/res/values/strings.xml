@@ -27,6 +27,9 @@
     <string name="respuestaAfirmativa">Felicidades, su solicitud fue aceptada.</string>
     <string name="respuestaNegativa">Lo sentimos, su solicitud fue rechazada.</string>
     <string name="editable">Editable</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="gestionDispositivos">Gestión de Dispositivos</string>
 
     <string-array name="Dispositivos">
         <item>Laptop</item>
