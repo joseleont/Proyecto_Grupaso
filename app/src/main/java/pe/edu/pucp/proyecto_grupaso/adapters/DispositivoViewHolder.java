@@ -1,10 +1,7 @@
 package pe.edu.pucp.proyecto_grupaso.adapters;
 
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,13 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import pe.edu.pucp.proyecto_grupaso.R;
 
-public class DispositivoViewHolder extends RecyclerView.ViewHolder implements  View.OnCreateContextMenuListener{
+public class DispositivoViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView devicePhoto;
     private TextView deviceName;
     private TextView deviceBrand;
     private TextView deviceType;
     private TextView deviceCount;
+    private Button deviceReserva;
 
     public DispositivoViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -28,6 +26,8 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder implements  V
         deviceBrand = itemView.findViewById(R.id.caracDispositivo);
         deviceType = itemView.findViewById(R.id.tipoDispositivo);
         deviceCount = itemView.findViewById(R.id.cantidadDispositivo);
+        deviceReserva = itemView.findViewById(R.id.reservaDispositivo);
+
     }
 
     public ImageView getDevicePhoto() {
@@ -50,15 +50,7 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder implements  V
         return deviceCount;
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
-        MenuItem reservar = menu.add(Menu.NONE, 1, 1, "Reservar dispositivo");
-        reservar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Log.d("myapp", "onMenuItemClick: " + menuInfo.toString());
-                return true;
-            }
-        });
+    public Button getDeviceReserva() {
+        return deviceReserva;
     }
 }

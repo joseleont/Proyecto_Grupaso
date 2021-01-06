@@ -177,7 +177,10 @@ public class ClientListDispositivosFragment extends Fragment {
                         // Log.d("myapp", "onChildAdded: " + snapshot.getValue());
                         Log.d("myapp", "onChildAdded: " + snapshot.toString());
                         Dispositivo mydevice = snapshot.getValue(Dispositivo.class);
+                        String mydeviceuid = snapshot.getKey();
                         Log.d("myapp", "onChildAdded: " + mydevice.toString());
+                        Log.d("myapp", "onChildAdded: " + mydeviceuid);
+                        mydevice.setUid(mydeviceuid);
                         losqueconcuerdan.add(mydevice);
                         // Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount());
                         if (losqueconcuerdan.size() > 0) {
