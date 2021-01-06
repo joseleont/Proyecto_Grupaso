@@ -20,23 +20,24 @@ import pe.edu.pucp.proyecto_grupaso.models.Solicitud;
 
 import static java.lang.Boolean.parseBoolean;
 
-public class VisualizarPedidos extends AppCompatActivity {
+public class HistorialSolicitudes extends AppCompatActivity {
     String correo;
     RecyclerView miRecyclerView;
     ArrayList<Solicitud> solicitudArrayList;
     SolicitudAdapter miRecyclerAdapter;
-
-    //cometario
+    String usuarioUUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visualizar_pedidos);
+        setContentView(R.layout.activity_historial_solicitudes);
 
-        miRecyclerView = findViewById(R.id.recyclerViewVisualizarSolicitudes);
+        miRecyclerView = findViewById(R.id.recyclerViewHistorial);
         LinearLayoutManager layoutRecyler = new LinearLayoutManager(this);
         miRecyclerView.setLayoutManager(layoutRecyler);
         miRecyclerView.setHasFixedSize(true);
+
+        usuarioUUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         solicitudArrayList = new ArrayList<>();
         limpiarArrayList();
@@ -44,7 +45,7 @@ public class VisualizarPedidos extends AppCompatActivity {
     }
 
     public void obtenerSolicitudesFirebase(String email){
-        FirebaseDatabase.getInstance().getReference().child("Solicitudes").child("Admin")
+        FirebaseDatabase.getInstance().getReference().child("Solicitudes").child("Usuarios").child(usuarioUUID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -62,7 +63,7 @@ public class VisualizarPedidos extends AppCompatActivity {
                             solicitudArrayList.add(solicitud);
                         }
 
-                        miRecyclerAdapter = new SolicitudAdapter(solicitudArrayList, getApplicationContext(),"usuarioTI");
+                        miRecyclerAdapter = new SolicitudAdapter(solicitudArrayList, getApplicationContext(),"cliente");
                         miRecyclerView.setAdapter(miRecyclerAdapter);
                         miRecyclerAdapter.notifyDataSetChanged();
 
@@ -83,4 +84,7 @@ public class VisualizarPedidos extends AppCompatActivity {
             }
         }
     }
+
+
+
 }

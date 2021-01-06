@@ -44,12 +44,14 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 
 public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.SolicitudHolder> {
+    private static String tipoUsuario;
     private ArrayList<Solicitud> solicitudArrayList;
     private Context context;
 
-    public SolicitudAdapter(ArrayList<Solicitud> solicitudArrayList, Context context) {
+    public SolicitudAdapter(ArrayList<Solicitud> solicitudArrayList, Context context, String tipoUsuario) {
         this.solicitudArrayList = solicitudArrayList;
         this.context = context;
+        this.tipoUsuario = tipoUsuario;
     }
 
     @NonNull
@@ -97,6 +99,11 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
             tvEstado = itemView.findViewById(R.id.tvestado);
             btnAceptar = itemView.findViewById(R.id.btnAceptarSolicitud);
             btnRechazar = itemView.findViewById(R.id.btnRechazarSolicitud);
+
+            if(tipoUsuario.equals("cliente")){
+                btnAceptar.setVisibility(View.GONE);
+                btnRechazar.setVisibility(View.GONE);
+            }
 
             mostrarMapa=itemView.findViewById(R.id.imageMapa);
             mostrarMapa.setOnClickListener(new View.OnClickListener() {
