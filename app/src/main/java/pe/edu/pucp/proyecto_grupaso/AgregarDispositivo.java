@@ -63,12 +63,12 @@ public class AgregarDispositivo extends AppCompatActivity {
         String caracteristicas = etCaracteristicas.getText().toString();
         String incluye = etIncluye.getText().toString();
         String tipo = spinnerTipo.getSelectedItem().toString();
-        if (tipo.equals("Otros")){
+        if (tipo.equals("Otro")){
             tipo = etOtro.getText().toString();
         }
         String cantidad = etCantidad.getText().toString();
 
-        Log.d("InfoAoo","LINK "+linkImagen);
+        Log.d("InfoApp","LINK "+linkImagen);
 
         if (!marca.isEmpty() &&
                 !caracteristicas.isEmpty() &&
@@ -100,9 +100,9 @@ public class AgregarDispositivo extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getApplicationContext(), "Dispositivo agregado", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+                    finish();
+                }
+            });
     }
 
     public  void Cancelar (View view){
