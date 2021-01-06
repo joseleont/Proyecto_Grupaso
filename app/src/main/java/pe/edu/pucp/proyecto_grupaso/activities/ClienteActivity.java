@@ -59,7 +59,7 @@ public class ClienteActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.menucliente,menu);
 
         return true;
     }
@@ -69,7 +69,7 @@ public class ClienteActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
 
-            case R.id.menuSalir:
+            case R.id.menuSalirCliente:
                 AuthUI instance = AuthUI.getInstance();
                 instance.signOut(this).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -80,6 +80,9 @@ public class ClienteActivity extends AppCompatActivity {
                 });
                 return true;
 
+            case R.id.menuHistorialCliente:
+              //  startActivity(new Intent(ClienteActivity.this, .class));
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
