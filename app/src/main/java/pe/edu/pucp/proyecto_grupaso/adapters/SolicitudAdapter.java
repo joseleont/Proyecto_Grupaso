@@ -102,7 +102,9 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
             mostrarMapa.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //ABRIR MAPA
                     String gps=solicitud.getGps();
+
 
                     Intent intent = new Intent(contexto, MapsActivity.class);
 

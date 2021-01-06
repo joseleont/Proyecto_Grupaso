@@ -31,14 +31,20 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyA2MWAo02O1pBbTxmZzfgiCJKad0But-oQ" />
 
         <activity
             android:name=".Mapa.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity android:name=".VisualizarDispositivoyReservar" />
         <activity android:name=".Reservar" />
-        <activity android:name=".VisualizarPedidos"></activity>
+        <activity android:name=".VisualizarPedidos">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AgregarFotoDispositivo" />
         <activity android:name=".AgregarDispositivo" />
         <activity android:name=".GestionDispositivos" />
@@ -47,11 +53,7 @@
         <activity android:name=".IniciarSesion" />
         <activity android:name=".RegistroNuevoCliente" />
         <activity android:name=".activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service

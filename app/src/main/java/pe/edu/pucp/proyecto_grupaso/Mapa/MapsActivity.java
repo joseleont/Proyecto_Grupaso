@@ -11,6 +11,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -44,11 +47,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         String gps=intent.getStringExtra("gps");
         //dentro del gps se nencuentra la ubicaciond
-        String[] ubicacion = gps.split("-");
-        String latitud= ubicacion[0];
-        String longitud =ubicacion[1];
+        String[] ubicacion = gps.split("/");
+        latitud= ubicacion[0];
+        longitud =ubicacion[1];
 
+        Button btnOK =findViewById(R.id.btnOK);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
+
+    String latitud;
+    String longitud;
 
     /**
      * Manipulates the map once available.
@@ -67,7 +80,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if (permiso == PackageManager.PERMISSION_GRANTED) {
 
-            geolocalizarMapa();
+            geolocalizarMapa(latitud,longitud);
 
 
         } else {
@@ -81,7 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            geolocalizarMapa();
+            geolocalizarMapa(latitud,longitud);
         } else {
             Log.d("infoApp", "no me dio permisos :(");
         }
@@ -89,7 +102,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    public void geolocalizarMapa() {
+    public void geolocalizarMapa(final String latitu, final String longitu) {
+
+        LatLng ubicacion = new LatLng(Float.parseFloat(latitu),Float.parseFloat(longitu));
+
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        markerOptions.title("Posicion del usuario");
+        markerOptions.position(ubicacion);
+
+        mMap.addMarker(markerOptions);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 14));
+        UiSettings uiSettings = mMap.getUiSettings();
+        uiSettings.setZoomControlsEnabled(true);
+
+
+
         FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -101,33 +129,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
 
-                //Se obtiene la ubicacion
-                LatLng ubicacion = new LatLng(location.getLatitude(), location.getLongitude());
+        for(int i=0;i<10;i++){
+            locationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
 
-                MarkerOptions markerOptions = new MarkerOptions();
+                    if(location!=null){
+                        //Se obtiene la ubicacion
+                        //LatLng ubicacion2 = new LatLng(location.getLatitude(), location.getLongitude());
+                        Log.d("InfoApp",location.getLatitude()+"GVYGY"+location.getLongitude());
 
-                markerOptions.title("Posicion del usuario");
-                markerOptions.position(ubicacion);
 
-                //marker = mMap.addMarker(markerOptions);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 14));
-                UiSettings uiSettings = mMap.getUiSettings();
-                uiSettings.setZoomControlsEnabled(true);
+                    }
+                    else{
+                        Log.d("InfoApp","HOilaaaaaa");
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                }
+            });
 
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        }
+
+
+        //LatLng sydney = new LatLng(-34, 151);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
