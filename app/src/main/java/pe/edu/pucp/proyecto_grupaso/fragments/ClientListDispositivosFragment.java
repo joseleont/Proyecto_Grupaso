@@ -53,6 +53,7 @@ public class ClientListDispositivosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        Log.d("InfoAppPresente","1");
 
         View view = inflater.inflate(R.layout.fragment_client_list_dispositivos, container, false);
 

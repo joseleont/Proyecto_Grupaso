@@ -56,6 +56,7 @@
     <string name="contrase_a">Contraseña</string>
     <string name="correo">Correo</string>
     <string name="title_activity_maps">Map</string>
+    <string name="ok">OK</string>
 
 
 </resources>
