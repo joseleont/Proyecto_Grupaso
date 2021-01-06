@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,12 +68,15 @@ public class AgregarDispositivo extends AppCompatActivity {
         }
         String cantidad = etCantidad.getText().toString();
 
+        Log.d("InfoAoo","LINK "+linkImagen);
+
         if (!marca.isEmpty() &&
                 !caracteristicas.isEmpty() &&
                 !incluye.isEmpty() &&
                 !cantidad.isEmpty() &&
                 !tipo.isEmpty() &&
-                !linkImagen.isEmpty()){
+                !(linkImagen+"").equals("null")){
+
 
             miDispositivo.setFoto(linkImagen);
             miDispositivo.setTipo(tipo);
@@ -84,7 +88,8 @@ public class AgregarDispositivo extends AppCompatActivity {
             subirDispositivo(miDispositivo);
         }
         else{
-            Toast.makeText(getApplicationContext(), "Complete todos los campos antes de agregar", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(getApplicationContext(), "Complete todos los campos y la foto antes de agregar", Toast.LENGTH_SHORT).show();
         }
     }
 
