@@ -14,6 +14,15 @@ public class Dispositivo {
     private String caracteristicas;
     private String incluye;
     private int stock;
+    private String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public Dispositivo() {
     }

@@ -1,37 +1,28 @@
 package pe.edu.pucp.proyecto_grupaso.adapters;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import pe.edu.pucp.proyecto_grupaso.R;
-import pe.edu.pucp.proyecto_grupaso.fragments.ClientListDispositivosFragment;
+import pe.edu.pucp.proyecto_grupaso.Reservar;
 import pe.edu.pucp.proyecto_grupaso.models.Dispositivo;
 
 public class DispositivoAdapter extends RecyclerView.Adapter<DispositivoViewHolder> {
 
     ArrayList<Dispositivo> dispositivos;
+    Context ctx;
 
     public DispositivoAdapter(ArrayList<Dispositivo> devices) {
         this.dispositivos = devices;
@@ -41,6 +32,7 @@ public class DispositivoAdapter extends RecyclerView.Adapter<DispositivoViewHold
     @Override
     public DispositivoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        this.ctx = parent.getContext();
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_dispositivo_unico, parent, false);
         return new DispositivoViewHolder(itemView);
 
@@ -59,9 +51,23 @@ public class DispositivoAdapter extends RecyclerView.Adapter<DispositivoViewHold
         holder.getDeviceCount().setText(countText);
 
         Picasso.get().load(dispositivo.getFoto()).into(holder.getDevicePhoto());
-        Log.d("ABIS",""+dispositivo.getFoto());
+        Log.d("ABIS", "" + dispositivo.getFoto());
 
+        holder.getDeviceReserva().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reservarDispositivo(ctx, dispositivo);
+            }
+        });
 
+    }
+
+    private void reservarDispositivo(Context context, Dispositivo dispositivo) {
+
+        Intent intent = new Intent(ctx, Reservar.class);
+        intent.putExtra("devuid", dispositivo.getUid());
+        intent.putExtra("usrmail", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        ctx.startActivity(intent);
     }
 
     @Override
