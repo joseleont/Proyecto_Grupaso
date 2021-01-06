@@ -106,7 +106,15 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance(); //obtneer referencia
         if((textContraseña+"").equals("")){
             error=1;
             editTextContraseña.setError("Ingrese una contraseña");
+        }else{
+            if(textContraseña.length()<6){
+
+                error=1;
+                editTextContraseña.setError("Contraseña muy debil,minimo 6 caracteres");
+            }
         }
+
+
 
         if(error==0){
             firebaseAuth.createUserWithEmailAndPassword(textCorreo, textContraseña)

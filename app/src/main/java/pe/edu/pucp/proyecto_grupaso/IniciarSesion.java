@@ -34,6 +34,7 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inciar_sesion);
 
+
     }
 
 

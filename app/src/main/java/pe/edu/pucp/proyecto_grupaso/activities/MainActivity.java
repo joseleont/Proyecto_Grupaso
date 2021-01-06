@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void irActivityUsuarioClientre(FirebaseUser currentUser){
-        if((currentUser.getEmail().equals("jose.leont@pucp.pe"))||(currentUser.getEmail().equals("a20151164@pucp.pe"))){
+        if((currentUser.getEmail().equals("jose.leont@pucp.pe"))||(currentUser.getEmail().equals("a20151164@pucp.pe"))||(currentUser.getEmail().equals("atanacio.sarita@pucp.pe"))){
             startActivity(new Intent(MainActivity.this, ClienteActivity.class));
 
         }else{
