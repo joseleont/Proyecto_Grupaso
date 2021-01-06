@@ -33,6 +33,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import pe.edu.pucp.proyecto_grupaso.HistorialSolicitudes;
 import pe.edu.pucp.proyecto_grupaso.R;
 import pe.edu.pucp.proyecto_grupaso.models.TokenClientes;
 import pe.edu.pucp.proyecto_grupaso.fragments.ClientListDispositivosFragment;
@@ -81,7 +82,7 @@ public class ClienteActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menuHistorialCliente:
-              //  startActivity(new Intent(ClienteActivity.this, .class));
+                startActivity(new Intent(ClienteActivity.this, HistorialSolicitudes.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

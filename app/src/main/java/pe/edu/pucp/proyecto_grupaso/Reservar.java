@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -82,7 +83,7 @@ public class Reservar extends AppCompatActivity {
                 sol.setMotivo(etMotivo.getText().toString());
                 sol.setMandarCorreo(true);
                 sol.setEstado("Pendiente");
-                sol.setGps("gps");
+                sol.setGps(gps.getText().toString());
                 agregarReservaFirebase(sol);
 
 
@@ -106,38 +107,65 @@ public class Reservar extends AppCompatActivity {
     public void obtenerGPS(){
 
 
-        FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        int permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+
+        if (permiso == PackageManager.PERMISSION_GRANTED) {
+
+            geolocalizarMapa();
+
+
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
-
-
-        locationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-
-
-                //Se obtiene la ubicacion
-                // LatLng ubicacion2 = new LatLng(location.getLatitude(), location.getLongitude());
-                //  Log.d("InfoApp",location.getLatitude()+"/"+location.getLongitude());
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
 
 
     }
 
+     public void geolocalizarMapa(){
 
+         FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+             // TODO: Consider calling
+             //    ActivityCompat#requestPermissions
+             // here to request the missing permissions, and then overriding
+             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+             //                                          int[] grantResults)
+             // to handle the case where the user grants the permission. See the documentation
+             // for ActivityCompat#requestPermissions for more details.
+             return;
+         }
+
+
+         locationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+             @Override
+             public void onSuccess(Location location) {
+
+                 //Se obtiene la ubicacion
+                  LatLng ubicacion2 = new LatLng(location.getLatitude(), location.getLongitude());
+                 //  Log.d("InfoApp",location.getLatitude()+"/"+location.getLongitude());
+                 gps.setText(location.getLatitude()+"/"+location.getLongitude());
+
+
+
+             }
+         }).addOnFailureListener(new OnFailureListener() {
+             @Override
+             public void onFailure(@NonNull Exception e) {
+                 e.printStackTrace();
+             }
+         });
+
+     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            geolocalizarMapa();
+        } else {
+            Log.d("infoApp", "no me dio permisos :(");
+        }
+    }
 }
