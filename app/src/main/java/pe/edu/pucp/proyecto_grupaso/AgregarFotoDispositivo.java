@@ -45,6 +45,8 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
     StorageReference referenciaFinal;
     Uri direccionImagen;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,7 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
         btnTomarFoto = findViewById(R.id.btnTomarFoto);
         btnCarrete = findViewById(R.id.btnCarrete);
         etnombreFoto = findViewById(R.id.etNombreFoto);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
