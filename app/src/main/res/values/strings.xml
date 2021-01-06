@@ -41,7 +41,7 @@
 
     <string name="tituloMain">¡Bienvenido/a a la aplicación Grupaso!</string>
     <string name="finalMain">Favor, procede a registrarte como nuevo cliente. Si ya te has registrado anteriormente, inicia sesión.</string>
-
+    <string name="historial">Historial de Solicitudes</string>
 
     <string-array name="Dispositivos">
         <item>Laptop</item>
