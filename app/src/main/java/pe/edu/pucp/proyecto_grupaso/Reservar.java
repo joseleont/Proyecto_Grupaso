@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -60,6 +61,7 @@ public class Reservar extends AppCompatActivity {
                 sol.setUidDispositivo(devuid);
                 sol.setCorreoUsuario(usrmail);
                 sol.setDireccion(etDireccion.getText().toString());
+                sol.setUidUsuario(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 sol.setMotivo(etMotivo.getText().toString());
                 sol.setMandarCorreo(true);
                 sol.setEstado("Pendiente");
