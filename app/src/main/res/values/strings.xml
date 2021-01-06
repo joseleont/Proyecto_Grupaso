@@ -30,6 +30,9 @@
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
     <string name="gestionDispositivos">Gestión de Dispositivos</string>
+    <string name="IngresarModificaciones">Ingrese las modificaciones para el dispositivo</string>
+    <string name="modificar">Modificar</string>
+    <string name="verGPS"> Ver GPS</string>
 
     <string-array name="Dispositivos">
         <item>Laptop</item>

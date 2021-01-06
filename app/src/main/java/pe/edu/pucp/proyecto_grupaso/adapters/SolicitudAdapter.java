@@ -68,8 +68,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
         holder.tvCorreo.setText("Correo: " + solicitudArrayList.get(position).getCorreoUsuario());
         holder.tvUIDdispositivo.setText(solicitudArrayList.get(position).getUidDispositivo());
         holder.tvMotivo.setText("Motivo: " + solicitudArrayList.get(position).getMotivo());
-
-
+        holder.tvEstado.setText("Estado solicitud: "+ solicitudArrayList.get(position).getEstado());
     }
 
     @Override
@@ -79,7 +78,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
 
     public static class SolicitudHolder extends RecyclerView.ViewHolder{
 
-        TextView tvUIDdispositivo, tvCorreo, tvDireccion, tvMotivo;
+        TextView tvUIDdispositivo, tvCorreo, tvDireccion, tvMotivo, tvEstado;
         Button btnAceptar,  btnRechazar;
         Context contexto;
         Solicitud solicitud;
@@ -95,6 +94,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
             tvCorreo = itemView.findViewById(R.id.tvcorreo);
             tvDireccion = itemView.findViewById(R.id.tvdireccion);
             tvMotivo = itemView.findViewById(R.id.tvmotivo);
+            tvEstado = itemView.findViewById(R.id.tvestado);
             btnAceptar = itemView.findViewById(R.id.btnAceptarSolicitud);
             btnRechazar = itemView.findViewById(R.id.btnRechazarSolicitud);
 

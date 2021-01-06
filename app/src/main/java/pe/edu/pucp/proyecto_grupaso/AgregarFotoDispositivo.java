@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -104,13 +105,9 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK){
             direccionImagen = data.getData();
             try{
-                imagen = MediaStore.Images.Media.getBitmap(getContentResolver(),direccionImagen);
-                imageViewFoto.setImageBitmap(imagen);
-                imageViewFoto.invalidate();
+                Picasso.get().load(direccionImagen).into(imageViewFoto);
                 btnSubirFoto.setVisibility(View.VISIBLE);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
