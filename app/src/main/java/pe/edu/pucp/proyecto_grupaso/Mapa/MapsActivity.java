@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -108,11 +110,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         MarkerOptions markerOptions = new MarkerOptions();
 
-        markerOptions.title("Posicion del usuario");
+        markerOptions.title("Posición del cliente");
         markerOptions.position(ubicacion);
 
-        mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 14));
+
+        mMap.addMarker(markerOptions).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.cd));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 16));
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
 
@@ -130,22 +133,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
 
-        for(int i=0;i<10;i++){
+
             locationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
 
-                    if(location!=null){
+
                         //Se obtiene la ubicacion
-                        //LatLng ubicacion2 = new LatLng(location.getLatitude(), location.getLongitude());
-                        Log.d("InfoApp",location.getLatitude()+"GVYGY"+location.getLongitude());
+                       // LatLng ubicacion2 = new LatLng(location.getLatitude(), location.getLongitude());
+                      //  Log.d("InfoApp",location.getLatitude()+"/"+location.getLongitude());
 
-
-                    }
-                    else{
-                        Log.d("InfoApp","HOilaaaaaa");
-
-                    }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -154,11 +151,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             });
 
-        }
 
 
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
     }
 }

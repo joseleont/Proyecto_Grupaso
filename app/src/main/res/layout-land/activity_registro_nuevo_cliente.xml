@@ -10,12 +10,12 @@
         android:id="@+id/editTextContraseñaRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/contrase_a"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/spinnerRol"
-        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="@+id/spinnerRol"
         app:layout_constraintTop_toBottomOf="@+id/spinnerRol" />
 
@@ -23,12 +23,12 @@
         android:id="@+id/editTextCorreoRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/correo"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/editTextCodigoRegistroNuevoCliente"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextCodigoRegistroNuevoCliente"
         app:layout_constraintTop_toBottomOf="@+id/editTextCodigoRegistroNuevoCliente" />
 
@@ -36,10 +36,10 @@
         android:id="@+id/spinnerRol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:entries="@array/Roles"
         app:layout_constraintEnd_toEndOf="@+id/editTextCorreoRegistroNuevoCliente"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="@+id/editTextCorreoRegistroNuevoCliente"
         app:layout_constraintTop_toBottomOf="@+id/editTextCorreoRegistroNuevoCliente" />
 
@@ -47,11 +47,12 @@
         android:id="@+id/editTextCodigoRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/c_digo"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,23 +60,23 @@
         android:id="@+id/btnCancelarCuentaRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:onClick="cancelar"
         android:text="@string/cancelar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContraseñaRegistroNuevoCliente" />
+        app:layout_constraintEnd_toEndOf="@+id/btnCrearCuentaRegistroNuevoCliente"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/btnCrearCuentaRegistroNuevoCliente"
+        app:layout_constraintTop_toBottomOf="@+id/btnCrearCuentaRegistroNuevoCliente" />
 
     <Button
         android:id="@+id/btnCrearCuentaRegistroNuevoCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="84dp"
         android:onClick="crearCuenta"
         android:text="@string/crear_cuenta"
-        app:layout_constraintBottom_toBottomOf="@+id/btnCancelarCuentaRegistroNuevoCliente"
-        app:layout_constraintStart_toEndOf="@+id/btnCancelarCuentaRegistroNuevoCliente"
-        app:layout_constraintTop_toTopOf="@+id/btnCancelarCuentaRegistroNuevoCliente"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/editTextCodigoRegistroNuevoCliente"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

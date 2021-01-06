@@ -45,6 +45,7 @@ public class GestionDispositivos extends AppCompatActivity {
         obtenerDispositivosFirebase();
     }
 
+    //OBTENER DATOS DE DISPOSITIVO DEL FIREBASE
     public void obtenerDispositivosFirebase(){
         FirebaseDatabase.getInstance().getReference().child("Equipos")
                 .addValueEventListener(new ValueEventListener() {

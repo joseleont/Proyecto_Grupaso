@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,17 +63,20 @@ public class AgregarDispositivo extends AppCompatActivity {
         String caracteristicas = etCaracteristicas.getText().toString();
         String incluye = etIncluye.getText().toString();
         String tipo = spinnerTipo.getSelectedItem().toString();
-        if (tipo.equals("Otros")){
+        if (tipo.equals("Otro")){
             tipo = etOtro.getText().toString();
         }
         String cantidad = etCantidad.getText().toString();
+
+        Log.d("InfoApp","LINK "+linkImagen);
 
         if (!marca.isEmpty() &&
                 !caracteristicas.isEmpty() &&
                 !incluye.isEmpty() &&
                 !cantidad.isEmpty() &&
                 !tipo.isEmpty() &&
-                !linkImagen.isEmpty()){
+                !(linkImagen+"").equals("null")){
+
 
             miDispositivo.setFoto(linkImagen);
             miDispositivo.setTipo(tipo);
@@ -84,7 +88,8 @@ public class AgregarDispositivo extends AppCompatActivity {
             subirDispositivo(miDispositivo);
         }
         else{
-            Toast.makeText(getApplicationContext(), "Complete todos los campos antes de agregar", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(getApplicationContext(), "Complete todos los campos y la foto antes de agregar", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -95,9 +100,9 @@ public class AgregarDispositivo extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getApplicationContext(), "Dispositivo agregado", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+                    finish();
+                }
+            });
     }
 
     public  void Cancelar (View view){

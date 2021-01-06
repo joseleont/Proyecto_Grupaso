@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
             startActivity(new Intent(MainActivity.this, ClienteActivity.class));
-
         }
         finish();
     }

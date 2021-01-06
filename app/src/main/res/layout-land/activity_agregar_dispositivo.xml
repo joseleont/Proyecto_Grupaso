@@ -10,10 +10,8 @@
         android:id="@+id/spinnerTipo"
         android:layout_width="179dp"
         android:layout_height="34dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="44dp"
         android:entries="@array/Dispositivos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -21,8 +19,8 @@
         android:id="@+id/imageView"
         android:layout_width="119dp"
         android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
         android:onClick="AgregarFoto"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,24 +31,37 @@
         android:id="@+id/etMarca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/marca"
         android:inputType="textPersonName"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etOtros" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerTipo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/spinnerTipo"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipo" />
 
     <EditText
         android:id="@+id/etCaracteristicas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/caracteristicas"
+        android:inputType="textMultiLine"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/etOtros"
+        app:layout_constraintStart_toStartOf="@+id/etOtros"
+        app:layout_constraintTop_toTopOf="@+id/etMarca" />
+
+    <EditText
+        android:id="@+id/etIncluye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/incluye"
         android:inputType="textMultiLine"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/etMarca"
@@ -59,56 +70,42 @@
         app:layout_constraintTop_toBottomOf="@+id/etMarca" />
 
     <EditText
-        android:id="@+id/etIncluye"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/incluye"
-        android:inputType="textMultiLine"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etCaracteristicas"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCaracteristicas"
-        app:layout_constraintTop_toBottomOf="@+id/etCaracteristicas" />
-
-    <EditText
         android:id="@+id/etCantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/cantidad"
         android:inputType="number"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etIncluye"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etIncluye"
-        app:layout_constraintTop_toBottomOf="@+id/etIncluye" />
+        app:layout_constraintEnd_toEndOf="@+id/etCaracteristicas"
+        app:layout_constraintStart_toStartOf="@+id/etCaracteristicas"
+        app:layout_constraintTop_toBottomOf="@+id/etCaracteristicas" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="60dp"
         android:onClick="AgregarDispositivo"
         android:text="@string/agregar"
         app:layout_constraintBottom_toBottomOf="@+id/button9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toTopOf="@+id/button9"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:onClick="Cancelar"
         android:text="@string/cancelar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCantidad" />
+        app:layout_constraintStart_toStartOf="@+id/etIncluye"
+        app:layout_constraintTop_toBottomOf="@+id/etIncluye" />
 
     <TextView
         android:id="@+id/textView3"
@@ -125,13 +122,16 @@
         android:id="@+id/etOtros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:ems="10"
         android:hint="Otros"
         android:inputType="textPersonName"
         android:textSize="16sp"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/spinnerTipo"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerTipo"
+        app:layout_constraintStart_toEndOf="@+id/spinnerTipo"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
@@ -139,14 +139,15 @@
         android:layout_height="wrap_content"
         android:text="@string/seleccioneTipo"
         app:layout_constraintStart_toStartOf="@+id/spinnerTipo"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="@string/especifiqueOtro"
-        app:layout_constraintStart_toStartOf="@+id/spinnerTipo"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerTipo" />
+        app:layout_constraintEnd_toEndOf="@+id/etOtros"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

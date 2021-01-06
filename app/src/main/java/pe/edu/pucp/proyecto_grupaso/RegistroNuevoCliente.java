@@ -86,7 +86,7 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance(); //obtneer referencia
             Log.d("InfoAppM",textCorreo+"a");
             Log.d("InfoAppM",textContraseña+"b");
 
-        if((textCodigo+"").equals("null")){
+        if((textCodigo+"").equals("")){
             error=1;
             editTextCodigo.setError("Ingrese un codigo");
         }else{
@@ -129,6 +129,9 @@ FirebaseAuth firebaseAuth= FirebaseAuth.getInstance(); //obtneer referencia
 
                                 enviarCorreoConfirmacion();
                                 finish();
+                            }else{
+                                EditText editTextCorreoComprobar=findViewById(R.id.editTextCorreoRegistroNuevoCliente);
+                                editTextCorreoComprobar.setError("Este correo no existe");
                             }
 
 

@@ -10,36 +10,34 @@
         android:id="@+id/btnGestionarDispositivos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="56dp"
         android:onClick="GestionarDispositivos"
         android:text="@string/gestionarDispositivos"
-        app:layout_constraintBottom_toTopOf="@+id/btnVisualizarPedidos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/textoBienvenidaTI"
+        app:layout_constraintTop_toTopOf="@+id/textoBienvenidaTI" />
 
     <Button
         android:id="@+id/btnVisualizarPedidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="36dp"
         android:onClick="VisualizarPedidos"
         android:text="@string/visualizarPedidos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/btnGestionarDispositivos"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="@+id/btnGestionarDispositivos"
+        app:layout_constraintTop_toBottomOf="@+id/btnGestionarDispositivos" />
 
     <TextView
         android:id="@+id/textoBienvenidaTI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="32dp"
         android:text="@string/bienvenidaTI"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,8 +45,9 @@
         android:id="@+id/imageView3"
         android:layout_width="231dp"
         android:layout_height="170dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textoBienvenidaTI"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="@+id/textoBienvenidaTI"
         app:layout_constraintTop_toBottomOf="@+id/textoBienvenidaTI"
         app:srcCompat="@drawable/dispositivos" />
