@@ -66,7 +66,6 @@ public class Reservar extends AppCompatActivity {
                 sol.setMandarCorreo(true);
                 sol.setEstado("Pendiente");
                 sol.setGps("gps");
-
                 agregarReservaFirebase(sol);
 
 
