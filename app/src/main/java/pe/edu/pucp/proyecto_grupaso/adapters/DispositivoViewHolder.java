@@ -1,5 +1,9 @@
 package pe.edu.pucp.proyecto_grupaso.adapters;
 
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import pe.edu.pucp.proyecto_grupaso.R;
 
-public class DispositivoViewHolder extends RecyclerView.ViewHolder {
+public class DispositivoViewHolder extends RecyclerView.ViewHolder implements  View.OnCreateContextMenuListener{
 
     private ImageView devicePhoto;
     private TextView deviceName;
@@ -24,8 +28,6 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
         deviceBrand = itemView.findViewById(R.id.caracDispositivo);
         deviceType = itemView.findViewById(R.id.tipoDispositivo);
         deviceCount = itemView.findViewById(R.id.cantidadDispositivo);
-
-
     }
 
     public ImageView getDevicePhoto() {
@@ -46,5 +48,17 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getDeviceCount() {
         return deviceCount;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem reservar = menu.add(Menu.NONE, 1, 1, "Reservar dispositivo");
+        reservar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Log.d("myapp", "onMenuItemClick: " + menuInfo.toString());
+                return true;
+            }
+        });
     }
 }

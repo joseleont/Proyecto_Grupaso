@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="3dp"
-    app:cardElevation="3dp">
+    app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/unique_device"
@@ -28,7 +28,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:text="iPhone XR"
             android:textAllCaps="true"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
@@ -43,7 +42,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Apple"
             android:textAllCaps="false"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +54,6 @@
             android:layout_height="0dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
-            android:text="Celular"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -67,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
-            android:text="5 dispoibles"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/deviceImage" />

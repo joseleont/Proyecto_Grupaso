@@ -61,7 +61,6 @@ public class DispositivoAdapter extends RecyclerView.Adapter<DispositivoViewHold
         Picasso.get().load(dispositivo.getFoto()).into(holder.getDevicePhoto());
         Log.d("ABIS",""+dispositivo.getFoto());
 
-
     }
 
     @Override

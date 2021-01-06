@@ -172,15 +172,22 @@ public class ClientListDispositivosFragment extends Fragment {
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    Log.d("myapp", "onChildAdded: " + snapshot.getValue());
-                    Dispositivo mydevice = snapshot.getValue(Dispositivo.class);
-                    Log.d("myapp", "onChildAdded: " + mydevice.toString());
-                    losqueconcuerdan.add(mydevice);
-                    Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount());
-                    if (losqueconcuerdan.size() > 0) {
-                        ClientListDispositivosFragment.this.myDeviceRv.setAdapter(new DispositivoAdapter(losqueconcuerdan));
-                        Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount() + " added");
+
+                    try {
+                        // Log.d("myapp", "onChildAdded: " + snapshot.getValue());
+                        Log.d("myapp", "onChildAdded: " + snapshot.toString());
+                        Dispositivo mydevice = snapshot.getValue(Dispositivo.class);
+                        Log.d("myapp", "onChildAdded: " + mydevice.toString());
+                        losqueconcuerdan.add(mydevice);
+                        // Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount());
+                        if (losqueconcuerdan.size() > 0) {
+                            ClientListDispositivosFragment.this.myDeviceRv.setAdapter(new DispositivoAdapter(losqueconcuerdan));
+                            Log.d("myapp", "onChildAdded: " + snapshot.getChildrenCount() + " added");
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
                     }
+
                 }
 
                 @Override

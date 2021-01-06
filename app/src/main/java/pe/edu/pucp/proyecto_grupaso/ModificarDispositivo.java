@@ -70,7 +70,8 @@ public class ModificarDispositivo extends AppCompatActivity {
             flag=true;
         }
         if (!cantidad.isEmpty()){
-            databaseReference.child("stock").setValue(cantidad);
+            // se debe modificar esto sino al actualizar luego dara un error al momento de listar los dispositivos. ya lo cambie xdxd
+            databaseReference.child("stock").setValue(Integer.parseInt(cantidad));
             flag=true;
         }
         if (!linkImagen.isEmpty()){
