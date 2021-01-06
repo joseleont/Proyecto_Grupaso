@@ -1,6 +1,7 @@
 package pe.edu.pucp.proyecto_grupaso.adapters;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
     private TextView deviceBrand;
     private TextView deviceType;
     private TextView deviceCount;
+    private Button deviceReserva;
 
     public DispositivoViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,7 +26,7 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
         deviceBrand = itemView.findViewById(R.id.caracDispositivo);
         deviceType = itemView.findViewById(R.id.tipoDispositivo);
         deviceCount = itemView.findViewById(R.id.cantidadDispositivo);
-
+        deviceReserva = itemView.findViewById(R.id.reservaDispositivo);
 
     }
 
@@ -46,5 +48,9 @@ public class DispositivoViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getDeviceCount() {
         return deviceCount;
+    }
+
+    public Button getDeviceReserva() {
+        return deviceReserva;
     }
 }
