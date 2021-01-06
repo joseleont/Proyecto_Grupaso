@@ -33,6 +33,15 @@
     <string name="IngresarModificaciones">Ingrese las modificaciones para el dispositivo</string>
     <string name="modificar">Modificar</string>
     <string name="verGPS"> Ver GPS</string>
+    <string name="introduccion">Esta aplicación está diseñada para que los clientes registrados puedan
+                                realizar solicitudes para préstamos de recursos informáticos (laptop, tablet, celular, etc.)
+                                indicando el motivo de su solicitud y la dirección a donde se le debe hacer llegar.
+                                Posteriormente, un administrador TI se encargará de evaluar las solicitudes y su respuesta
+                                llegará a los clientes por notificaciones, y correo si así lo desee el cliente.</string>
+
+    <string name="tituloMain">¡Bienvenido/a a la aplicación Grupaso!</string>
+    <string name="finalMain">Favor, procede a registrarte como nuevo cliente. Si ya te has registrado anteriormente, inicia sesión.</string>
+
 
     <string-array name="Dispositivos">
         <item>Laptop</item>

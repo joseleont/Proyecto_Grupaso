@@ -105,6 +105,7 @@ public class AgregarFotoDispositivo extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK){
             direccionImagen = data.getData();
             try{
+                imagen = MediaStore.Images.Media.getBitmap(getContentResolver(),direccionImagen);
                 Picasso.get().load(direccionImagen).into(imageViewFoto);
                 btnSubirFoto.setVisibility(View.VISIBLE);
             } catch (Exception e) {
