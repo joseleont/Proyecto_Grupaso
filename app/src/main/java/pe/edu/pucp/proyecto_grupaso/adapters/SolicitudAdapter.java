@@ -123,6 +123,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
                     }
                     mandarNotificacion(solicitud.getUidUsuario(), respuestaAfirmativa, contexto);
                     subirHistorial(solicitud, solicitud.getUidUsuario(), "Aceptada", contexto);
+                    eliminarPendiente(solicitud, "Aceptada");
 
                 }
             });
@@ -135,6 +136,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
                     }
                     mandarNotificacion(solicitud.getUidUsuario(), respuestaNegativa, contexto);
                     subirHistorial(solicitud, solicitud.getUidUsuario(), "Rechazada", contexto);
+                    eliminarPendiente(solicitud, "Rechazada");
                 }
             });
 
@@ -212,6 +214,46 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.Soli
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(context, "Error: No se pudo aceptar solicitud", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    public static void eliminarPendiente(final Solicitud solicitud, final String mensaje){
+
+        FirebaseDatabase.getInstance().getReference().child("Solicitudes").child("Admin")
+                .orderByChild("motivo").equalTo(solicitud.getMotivo())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot childSnapshot: snapshot.getChildren()) {
+                            final String key = childSnapshot.getKey();
+                            if (mensaje.equals("Aceptada")){
+                                FirebaseDatabase.getInstance().getReference()
+                                        .child("Equipos").child(solicitud.getUidDispositivo()).child("stock")
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                int cant;
+                                                cant = snapshot.getValue(int.class);
+                                                cant = cant - 1;
+                                                FirebaseDatabase.getInstance().getReference()
+                                                        .child("Equipos").child(solicitud.getUidDispositivo()).child("stock")
+                                                        .setValue(cant);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                            }
+                            FirebaseDatabase.getInstance().getReference().child("Solicitudes").child("Admin")
+                                    .child(key).removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
                     }
                 });
     }
