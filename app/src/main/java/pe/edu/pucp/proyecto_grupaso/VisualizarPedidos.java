@@ -26,8 +26,6 @@ public class VisualizarPedidos extends AppCompatActivity {
     ArrayList<Solicitud> solicitudArrayList;
     SolicitudAdapter miRecyclerAdapter;
 
-    //cometario
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
